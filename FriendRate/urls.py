@@ -21,5 +21,7 @@ from user.api import UserModelAPIView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("user/", UserModelAPIView.as_view())
+    path("user/", UserModelAPIView.as_view({'get':'list','post':'create'}),name='user-model-list'),
+    path('api/user/<int:pk>/',UserModelAPIView.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'}), name='user-model-detail'),
+
 ]
