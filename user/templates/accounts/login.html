@@ -1,0 +1,6 @@
+{% extends "account/base.html" %}
+
+{% block content %}
+    <h2>Login with Facebook</h2>
+    <a href="{% provider_login_url 'facebook' %}">Login with Facebook</a>
+{% endblock %}
