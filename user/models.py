@@ -16,9 +16,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         ("W", "Women"),
         ("NB", "Enby"),
     ]
-    username = models.CharField(max_length=50, unique=True, null=False)
+    username = models.CharField(max_length=50, unique=True, null=False) # unique = True исправить
     password = models.CharField(max_length=128)  # TODO Django's make_password
-    email = models.EmailField(max_length=150, unique=True, null=False)
+    email = models.EmailField(max_length=150, unique=True, null=False) #Исправить unique = True
     name = models.CharField(max_length=50, null=True)
     surname = models.CharField(max_length=50, null=True)
     is_staff = models.BooleanField(default=False)

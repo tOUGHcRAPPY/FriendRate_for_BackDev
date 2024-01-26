@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-p3d=x0ta6$ko=7py5qz@_+#&clin+(@t2y2yvzr4drf^5&)v4)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost"]
 
 # Application definition
 
@@ -69,9 +69,9 @@ TEMPLATES = [
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
-                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
@@ -151,6 +151,10 @@ ACCOUNT_ALLOW_REGISTRATION = True
 ACCOUNT_EMAIL_VERIFICATION = ("mandatory",)
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+
+
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -182,10 +186,11 @@ SOCIALACCOUNT_PROVIDERS = {
         "SCOPE": ["profile", "email"],
         "AUTH_PARAMS": {"access_type": "online"},
         "APP": {
-            "client_id": "722867581498-ubd170nabskvdegqncpe5qaajsja5bbp.apps.googleusercontent.com",
-            "secret": "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",
+            "client_id": "535613704472-gq33uegp53c2cl7g8jq4g2rheg5r6ipj.apps.googleusercontent.com",
+            "secret": "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",
             "key": "",
         },
     },
 }
 
+# LOGIN_REDIRECT_URL = "/"

@@ -8,5 +8,5 @@ from .serializers import UserSerializers
 class UserModelAPIView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializers
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
