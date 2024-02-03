@@ -1,6 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from .managers import UserManager
+from django.contrib.auth.models import (
+    AbstractUser,
+    UserManager,
+)
 
 
 class Gender(models.Model):
@@ -10,16 +12,16 @@ class Gender(models.Model):
         return self.name
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractUser):
     GENDER_CHOICES = [
         ("M", "Men"),
         ("W", "Women"),
         ("NB", "Enby"),
     ]
-    username = models.CharField(max_length=50, unique=True, null=False) # unique = True исправить
-    password = models.CharField(max_length=128)  # TODO Django's make_password
-    email = models.EmailField(max_length=150, unique=True, null=False) #Исправить unique = True
-    name = models.CharField(max_length=50, null=True)
+    username = models.CharField(max_length=50, unique=True, null=False)
+    password = models.CharField(max_length=128)
+    email = models.EmailField(max_length=150, unique=True, null=False)
+    first_name = models.CharField(max_length=50, null=True)
     surname = models.CharField(max_length=50, null=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -30,7 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     EMAIL_FIELD = "email"
-    USERNAME_FIELD = "email"
+    USERNAME_FIELD = "username"
     REQUIRED_FIELDS = []
 
     def __str__(self):
@@ -61,5 +63,3 @@ class PasswordRecovery(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     recovery_code = models.CharField(max_length=50)
     expiration_date = models.DateTimeField()
-
-
