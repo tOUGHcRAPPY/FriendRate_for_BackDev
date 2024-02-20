@@ -14,6 +14,6 @@ class UserModelAPIView(viewsets.ModelViewSet):
         if self.action == "create":
             return [permissions.AllowAny()]
         elif self.action in ["retrieve", "update", "partial_update", "destroy"]:
-            return [permissions.AllowAny()]
+            return [permissions.IsAuthenticated()]
         else:
             return super().get_permissions()
